@@ -16,6 +16,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Jewel" customModuleProvider="target">
             <connections>
+                <outlet property="CKRT" destination="f05-ZW-NN7" id="DJW-Ct-cHw"/>
                 <outlet property="clickers" destination="APE-DB-eLR" id="4gQ-rR-JPr"/>
                 <outlet property="clickies" destination="9an-Qj-oEV" id="hm9-SG-VP0"/>
                 <outlet property="costiesText" destination="em8-Ak-nnV" id="bmn-JI-flx"/>
@@ -781,7 +782,8 @@
         </window>
         <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
-            <rect key="contentRect" x="601" y="300" width="175" height="189"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="0.0" y="0.0" width="175" height="189"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="hIl-VV-vwO">
                 <rect key="frame" x="0.0" y="0.0" width="175" height="189"/>

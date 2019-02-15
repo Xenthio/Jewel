@@ -21,6 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
 
     
     
+    @IBOutlet var CKRT: NSWindow!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         self.webView.navigationDelegate = self
@@ -168,38 +169,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             
         }
     } //Loads URL input when GoButton is pressed
+
     
-    //------------------//
-    // LMAO SECRET YEET //
-    //------------------//
+
+    //this is here to mark a location! Location: 4.D.C. KRET
     
-    // cause why not?
-    
-    
-    // Hi! welcome to 'the totally original game idea simulator 2019 edition' version 1337.420!
-    // in this game you cl- fuck it this is such a bad joke i dont know why im doing this shit.
-    @IBOutlet var clickers: NSTextField!
-    var costies:Int32 = 10
-    @IBOutlet weak var costiesText: NSTextField!
-    @IBOutlet weak var clickies: NSTextField!
-    @IBAction func clicky(_ sender: Any) {
-        clickies.intValue += 1
-    }
-    @IBAction func BuyClicky(_ sender: Any) {
-        if clickies.intValue >= costies {
-            clickies.intValue -= costies
-            clickers.intValue += 1
-            costies += 2
-            costiesText.stringValue = "Cost: " + String(costies)
-            
-        }
-    }
-    // this is the most basic shit i dont need to write code comments,
-    // yeah yeah i know, call me a cunt.
-    
-    
-    
-    
+    // ;)
+
 }
 
 //Ethan was Here

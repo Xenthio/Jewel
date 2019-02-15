@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA8C0E53221689B1003AE8B1 /* TestWKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8C0E52221689B0003AE8B1 /* TestWKView.swift */; };
 		AAAB3EA12213FE20004C783C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB3EA02213FE20004C783C /* AppDelegate.swift */; };
 		AAAB3EA32213FE26004C783C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAB3EA22213FE26004C783C /* Assets.xcassets */; };
 		AAAB3EA62213FE26004C783C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAB3EA42213FE26004C783C /* MainMenu.xib */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA8C0E52221689B0003AE8B1 /* TestWKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWKView.swift; sourceTree = "<group>"; };
 		AAAB3E9D2213FE20004C783C /* Jewel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jewel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB3EA02213FE20004C783C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAAB3EA22213FE26004C783C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				AAAB3EA42213FE26004C783C /* MainMenu.xib */,
 				AAAB3EA72213FE26004C783C /* Info.plist */,
 				AAAB3EA82213FE26004C783C /* Jewel.entitlements */,
+				AA8C0E52221689B0003AE8B1 /* TestWKView.swift */,
 			);
 			path = Jewel;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8C0E53221689B1003AE8B1 /* TestWKView.swift in Sources */,
 				AAAB3EA12213FE20004C783C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
