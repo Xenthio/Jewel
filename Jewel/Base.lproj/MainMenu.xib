@@ -779,7 +779,7 @@
             </view>
             <point key="canvasLocation" x="142" y="410.5"/>
         </window>
-        <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
+        <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
             <rect key="contentRect" x="601" y="300" width="175" height="189"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
@@ -823,7 +823,7 @@
                         <rect key="frame" x="-2" y="141" width="179" height="22"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" alignment="center" title="totally orginial game idea am i right?" id="bdw-6e-X7S">
-                            <font key="font" metaFont="system" size="9"/>
+                            <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
