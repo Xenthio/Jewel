@@ -17,12 +17,15 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Jewel" customModuleProvider="target">
             <connections>
                 <outlet property="CKRT" destination="f05-ZW-NN7" id="DJW-Ct-cHw"/>
+                <outlet property="Winderps" destination="0Dp-Pq-lQw" id="HwM-P1-VLF"/>
                 <outlet property="clickers" destination="APE-DB-eLR" id="4gQ-rR-JPr"/>
                 <outlet property="clickies" destination="9an-Qj-oEV" id="hm9-SG-VP0"/>
                 <outlet property="costiesText" destination="em8-Ak-nnV" id="bmn-JI-flx"/>
+                <outlet property="homepage" destination="0S1-Qf-GWf" id="8vF-dg-G1E"/>
                 <outlet property="isSecure" destination="qwd-9c-UtW" id="oeb-P3-bov"/>
                 <outlet property="myURL" destination="ijp-Jm-fdU" id="Gjn-kN-u6e"/>
                 <outlet property="progressView" destination="pfe-YK-CNU" id="xpO-nO-U07"/>
+                <outlet property="title" destination="MHo-uU-BNt" id="3t9-Kc-5vP"/>
                 <outlet property="webView" destination="HmI-zt-9bB" id="7BT-gm-FOv"/>
             </connections>
         </customObject>
@@ -692,13 +695,13 @@
         <window title="Jewel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="0Dp-Pq-lQw">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <rect key="contentRect" x="392" y="255" width="576" height="385"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="Klp-nW-0ck">
                 <rect key="frame" x="0.0" y="0.0" width="576" height="385"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijp-Jm-fdU">
-                        <rect key="frame" x="69" y="354" width="360" height="18"/>
+                        <rect key="frame" x="105" y="354" width="324" height="18"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="Type a URL or search Google" drawsBackground="YES" id="gPj-n8-OPS">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -740,7 +743,7 @@
                         </buttonCell>
                     </button>
                     <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="pfe-YK-CNU">
-                        <rect key="frame" x="69" y="366" width="360" height="20"/>
+                        <rect key="frame" x="105" y="366" width="324" height="20"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     </progressIndicator>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHo-uU-BNt">
@@ -776,6 +779,17 @@
                             <wkPreferences key="preferences"/>
                         </wkWebViewConfiguration>
                     </wkWebView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-gH-E69">
+                        <rect key="frame" x="65" y="357" width="32" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p5o-MO-3XY">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="goBack:" target="HmI-zt-9bB" id="tv8-Dj-tt0"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="142" y="410.5"/>
@@ -784,7 +798,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="0.0" width="175" height="189"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="hIl-VV-vwO">
                 <rect key="frame" x="0.0" y="0.0" width="175" height="189"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -853,8 +867,51 @@
             </view>
             <point key="canvasLocation" x="-59" y="26"/>
         </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="DFP-fy-dLp">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="109" y="131" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <view key="contentView" id="0yb-f4-Hak">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0S1-Qf-GWf">
+                        <rect key="frame" x="80" y="242" width="400" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="mt1-nO-yDd">
+                            <font key="font" usesAppearanceFont="YES"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iu9-kN-MMV">
+                        <rect key="frame" x="8" y="1" width="75" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RHp-9q-bbh">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="homepage:" target="Voe-Tx-rLC" id="DCL-0J-b6M"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYG-PI-723">
+                        <rect key="frame" x="4" y="245" width="70" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Homepage" id="smV-8T-yuF">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="309" y="-15"/>
+        </window>
     </objects>
     <resources>
+        <image name="NSGoBackTemplate" width="9" height="12"/>
         <image name="NSGoForwardTemplate" width="9" height="12"/>
         <image name="NSIconViewTemplate" width="14" height="10"/>
         <image name="NSLockLockedTemplate" width="10" height="14"/>

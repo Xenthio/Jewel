@@ -5,6 +5,9 @@
 //  Created by Ethan Cardwell on 27/9/18.
 //  Copyright © 2018 Ethan Cardwell. All rights reserved.
 //
+// GitHub: github.com/Xenthio/Jewel/
+// Website: xenthio.github.io/jewel/
+
 
 //import MyPeePeeInUrMum
 import Cocoa
@@ -18,15 +21,36 @@ import Dispatch
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
-
     
+    struct defaultsKeys {
+        static let keyOne = "https://xenthio.github.io/homepage.html"
+    }
+    
+    @IBOutlet weak var homepageis: NSTextField!
+    
+    
+    @IBAction func homepage(_ sender: Any) { // apply settings in settings dialog
+        
+        UserDefaults.standard.set(homepageis.stringValue, forKey: "URL")
+        //defaults.set(homepageis.stringValue, forKey: defaultsKey.keyOne)
+    }
     
     @IBOutlet var CKRT: NSWindow!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         self.webView.navigationDelegate = self
-        let request = URLRequest(url: URL(string: "https://xenthio.github.io/homepage.html")!)
-        webView?.load(request) //load the homepage
+        // test for custom homepage
+        
+        //if let stringOne = defaults.string {
+        //zlet name = UserDefaults.standard.string(forKey: "URL") ?? ""
+        //if name != nil {
+        //    let request = URLRequest(url: URL(string: name)!)
+        //    webView?.load(request)  // Some String Value
+        
+        //} else {
+            let request = URLRequest(url: URL(string: "https://xenthio.github.io/homepage.html")!)
+            webView?.load(request) //load the homepage
+        //}
         // TODO: Make it so the user can change the homepage.
         print("Launched Successfully")
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
@@ -64,6 +88,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     //-----------------------------------------------------------------------------------------//
     
     // Varable declarations:
+    @IBOutlet var Winderps: NSWindow!
+    @IBOutlet var title: NSTextField!
     @IBOutlet var urHome: NSButton!
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var webView: WKWebView!
@@ -109,6 +135,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             } else {
                 isSecure.isHidden = true
             } // fix because it does not work for some reason
+            title.stringValue = webView.title!
             if webView.estimatedProgress == 1.0 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     self.progressView.doubleValue = 0.1
@@ -132,7 +159,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     @IBAction func myURLonenter(_ sender: Any) {
         if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
             // Detects if it's a URL
-            webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Jewel/605.1.15"
+            webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
             let request = URLRequest(url: URL(string: myURL.stringValue)!)
             webView?.load(request)
             print("Contains a url!")
@@ -153,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
         
         if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
             // Detects if it's a URL
-            webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Jewel/605.1.15"
+            webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
             let request = URLRequest(url: URL(string: myURL.stringValue)!)
             webView?.load(request)
             print("Contains a url!")
