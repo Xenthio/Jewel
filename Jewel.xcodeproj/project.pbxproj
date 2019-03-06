@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA7D3E47221E1C01005DA78C /* mainJewelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7D3E46221E1C01005DA78C /* mainJewelView.xib */; };
+		AA7D3E49221E1D4B005DA78C /* mainJewelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D3E48221E1D4B005DA78C /* mainJewelView.swift */; };
 		AA8C0E53221689B1003AE8B1 /* TestWKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8C0E52221689B0003AE8B1 /* TestWKView.swift */; };
 		AAAB3EA12213FE20004C783C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB3EA02213FE20004C783C /* AppDelegate.swift */; };
 		AAAB3EA32213FE26004C783C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAB3EA22213FE26004C783C /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA7D3E46221E1C01005DA78C /* mainJewelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = mainJewelView.xib; sourceTree = "<group>"; };
+		AA7D3E48221E1D4B005DA78C /* mainJewelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainJewelView.swift; sourceTree = "<group>"; };
 		AA8C0E52221689B0003AE8B1 /* TestWKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWKView.swift; sourceTree = "<group>"; };
 		AAAB3E9D2213FE20004C783C /* Jewel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jewel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB3EA02213FE20004C783C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				AAAB3EA72213FE26004C783C /* Info.plist */,
 				AAAB3EA82213FE26004C783C /* Jewel.entitlements */,
 				AA8C0E52221689B0003AE8B1 /* TestWKView.swift */,
+				AA7D3E46221E1C01005DA78C /* mainJewelView.xib */,
+				AA7D3E48221E1D4B005DA78C /* mainJewelView.swift */,
 			);
 			path = Jewel;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7D3E47221E1C01005DA78C /* mainJewelView.xib in Resources */,
 				AAAB3EA32213FE26004C783C /* Assets.xcassets in Resources */,
 				AAAB3EA62213FE26004C783C /* MainMenu.xib in Resources */,
 			);
@@ -260,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA8C0E53221689B1003AE8B1 /* TestWKView.swift in Sources */,
+				AA7D3E49221E1D4B005DA78C /* mainJewelView.swift in Sources */,
 				AAAB3EA12213FE20004C783C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="574" height="384"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EVM-TF-Cul">
+                    <rect key="frame" x="105" y="354" width="324" height="18"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="Type a URL or search Google" drawsBackground="YES" id="eSO-uA-7i9">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7k-Es-Msk">
+                    <rect key="frame" x="437" y="357" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoForwardTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yzq-lj-eRt">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MET-lr-GIJ">
+                    <rect key="frame" x="477" y="357" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E2H-Vj-zDf">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-Kd-3QE">
+                    <rect key="frame" x="538" y="357" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3q6-Ln-zQA">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                </button>
+                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="aFK-I3-z3u">
+                    <rect key="frame" x="105" y="366" width="324" height="20"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jp2-19-lg8">
+                    <rect key="frame" x="-2" y="354" width="72" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Jewel Beta" id="jb5-os-eDA">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-OT-SYO">
+                    <rect key="frame" x="517" y="362" width="13" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockLockedTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="XhA-CT-GFT">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j43-DS-YyE">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="350"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fv7-Eg-1ru">
+                    <rect key="frame" x="65" y="357" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Cy-nj-Y63">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goBack:" target="j43-DS-YyE" id="70l-Ub-KyI"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="187" y="210"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSGoBackTemplate" width="9" height="12"/>
+        <image name="NSGoForwardTemplate" width="9" height="12"/>
+        <image name="NSIconViewTemplate" width="14" height="10"/>
+        <image name="NSLockLockedTemplate" width="10" height="14"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
+</document>

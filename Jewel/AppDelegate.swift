@@ -13,6 +13,8 @@
 import Cocoa
 import WebKit
 import Dispatch
+import Foundation
+
 
 
 //let webConfiguration = WKWebViewConfiguration()
@@ -35,8 +37,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
         //defaults.set(homepageis.stringValue, forKey: defaultsKey.keyOne)
     }
     
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+
+    
     @IBOutlet var CKRT: NSWindow!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
         
         self.webView.navigationDelegate = self
         // test for custom homepage
@@ -103,8 +111,32 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     // Here i present...!
     // The *amazing* Error Handler that i spent wayyy too much time researching on how to make it.
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
-        webView.load(request)
+        //let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
+        // i was an idiot and i did not pick up on the fact that if you were offline it could not display the error page.
+        webView.loadHTMLString("""
+            <html>
+                <head>
+                    <title>Whoops!</title>
+                </head>
+
+                <body>
+                    <span style="font-family:arial,helvetica,sans-serif;">
+            
+            
+            
+                        <span style="font-family:arial,helvetica,sans-serif;">
+                            <h1>Oh no! There was an Error!</h1>
+                            <h4>You could Try:</h4>
+                            Checking if you spelled the address correctly
+                            <br>
+                            or if you are connected to the internet
+                            <p>&nbsp;</p>
+            
+                        </span>
+                    </span>
+                </body>
+            </html>
+""", baseURL: URL(string: "about:blank"))
         // TODO:
         // 1. make pages for specific errors
         // 2. make it pickup on the error and display the page for that specific error
@@ -113,7 +145,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     
     var estWebload = 0
     
-    
+
     
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -130,7 +162,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             myURL.takeStringValueFrom(webView.url)
             urHome.isHidden = true
             print((webView.serverTrust! as! String)+" is trust?")
-            if webView.hasOnlySecureContent == true {
+            if webView.hasOnlySecureContent {
                 isSecure.isHidden = false
             } else {
                 isSecure.isHidden = true
@@ -166,17 +198,33 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             repeatTimes = 0
             print("System-Utility: Loaded " + myURL.stringValue + " successfully")
         } else {
-            // Detects if it's a Google search
-            let newString = myURL.stringValue.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil) //replaces spaces with pluses otherwise it'll crash.
             
-            let request = URLRequest(url: URL(string: "https://www.google.com/search?q="+newString)!)
-            
-            webView?.load(request)
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
+                // Detects if it's a URL
+                webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
+                let theCurrentURL = "https://" + myURL.stringValue
+                let request = URLRequest(url: URL(string: theCurrentURL )!)
+                webView?.load(request)
+                print("Contains a url!")
+                repeatTimes = 0
+                print("System-Utility: Loaded " + myURL.stringValue + " successfully")
+            } else {
+                // Detects if it's a Google search
+                let newString = myURL.stringValue.replacingOccurrences(of: " ", with: "+",  options: .literal, range: nil) //replaces spaces with pluses otherwise it'll crash.
+                
+                let request = URLRequest(url: URL(string: "https://www.google.com/search?q="+newString)!)
+                
+                webView?.load(request)
+            }
             
         }
     } // Loads URL input when Enter is pressed
     
     @IBAction func GoButton(_ sender: Any) {
+        
+        // find better way to detect website
+        
+
         
         if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
             // Detects if it's a URL
@@ -187,13 +235,23 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             repeatTimes = 0
             print("System-Utility: Loaded " + myURL.stringValue + " successfully")
         } else {
-            // Detects if it's a Google search
-            let newString = myURL.stringValue.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil) //replaces spaces with pluses otherwise it'll crash.
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
+                // Detects if it's a URL
+                webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
+                let theCurrentURL = "https://" + myURL.stringValue
+                let request = URLRequest(url: URL(string: theCurrentURL )!)
+                webView?.load(request)
+                print("Contains a url!")
+                repeatTimes = 0
+                print("System-Utility: Loaded " + myURL.stringValue + " successfully")
+            } else {
+                // Detects if it's a Google search
+                let newString = myURL.stringValue.replacingOccurrences(of: " ", with: "+",  options: .literal, range: nil) //replaces spaces with pluses otherwise it'll crash.
             
-            let request = URLRequest(url: URL(string: "https://www.google.com/search?q="+newString)!)
-            
-            webView?.load(request)
-            
+                let request = URLRequest(url: URL(string: "https://www.google.com/search?q="+newString)!)
+                
+                webView?.load(request)
+            }
         }
     } //Loads URL input when GoButton is pressed
 
