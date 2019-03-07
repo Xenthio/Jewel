@@ -4,7 +4,11 @@
 
 You can use it to learn how to use WKWebView in swift or an alternative to safari.
 
-TODO:
+**IMAGES:** \
+![insert-image-here](/url "screenshot")
+
+
+**TODO:**
 
 - [ ] User can set own homepage
 - [X] Error Page now shows a different page depending on the Error instead of just saying "an error occoured"
