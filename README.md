@@ -5,7 +5,7 @@
 You can use it to learn how to use WKWebView in swift or an alternative to safari.
 
 **IMAGES:** \
-![insert-image-here](/url "screenshot")
+![insert-image-here](https://raw.githubusercontent.com/Xenthio/Jewel/master/scrnshot1.png "screenshot")
 
 
 **TODO:**
