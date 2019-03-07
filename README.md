@@ -4,7 +4,7 @@
 
 You can use it to learn how to use WKWebView in swift or an alternative to safari.
 
-**IMAGES:** \
+
 ![pic](https://raw.githubusercontent.com/Xenthio/Jewel/master/scrnshot01.png "screenshot")
 
 
