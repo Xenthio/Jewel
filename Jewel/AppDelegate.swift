@@ -17,18 +17,18 @@ import Foundation
 
 
 
-//let webConfiguration = WKWebViewConfiguration()
 //var webView = WKWebView(frame: .zero, configuration: webConfiguration)
 
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSessionDelegate {
     
     struct defaultsKeys {
         static let keyOne = "https://xenthio.github.io/homepage.html"
     }
     
     @IBOutlet weak var homepageis: NSTextField!
+    
     
     
     @IBAction func homepage(_ sender: Any) { // apply settings in settings dialog
@@ -45,8 +45,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     @IBOutlet var CKRT: NSWindow!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+
+
         
         self.webView.navigationDelegate = self
+        webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15"
         // test for custom homepage
         
         //if let stringOne = defaults.string {
@@ -75,20 +78,110 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     
     
     
-    /*func webView(webView: WKWebView,
-                 didFailProvisionalNavigation navigation: WKNavigation!,
-                 withError error: NSError) {
-        if error.code == -1001 { // TIMED OUT:
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        let nserr = error as NSError
+        if nserr.code == -1001 { // TIMED OUT:
             let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
             webView.load(request)
-        } else if error.code == -1003 { // SERVER CANNOT BE FOUND
-            let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
-            webView.load(request)
-        } else if error.code == -1100 { // URL NOT FOUND ON SERVER
-            let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
-            webView.load(request)
+        } else if nserr.code == -1009 { // NOT CONNECTED TO THE INTERNET
+            webView.loadHTMLString("""
+            <html>
+                <head>
+                    <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
+                </head>
+
+                <body>
+                    <span style="font-family:arial,helvetica,sans-serif;">
+            
+            
+            
+                        <span style="font-family:arial,helvetica,sans-serif;">
+                            <h1>Cannot connect to the internet!</h1>
+                            the most common of all!
+                            <br>
+                            <h4>you could try:</h4>
+                            Turning on WIFI connections if it is disabled
+                            <br>
+                            Using a Wired connection
+                            <br>
+                            Restarting the Router
+                            <br>
+                            Restarting your Computer
+                            <p>&nbsp;</p>
+            
+                        </span>
+                    </span>
+                </body>
+            </html>
+""", baseURL: URL(string: "about:blank"))
+        } else if nserr.code == -1003 { // SERVER CANNOT BE FOUND
+            webView.loadHTMLString("""
+            <html>
+                <head>
+                    <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
+                </head>
+
+                <body>
+                    <span style="font-family:arial,helvetica,sans-serif;">
+            
+            
+            
+                        <span style="font-family:arial,helvetica,sans-serif;">
+                            <h1>Oh no! There was an Error!</h1>
+                            <h4>it seems the server could not be found!</h4>
+                            check if you spelled the address correctly
+                            <br>
+                            if you are the admin of this webpage, you know what to do.
+                            <br>
+                            <br>
+                            TODO: MAKE BETTER ERROR PAGE
+                            <p>&nbsp;</p>
+            
+                        </span>
+                    </span>
+                </body>
+            </html>
+""", baseURL: URL(string: "about:blank"))
+        } else if nserr.code == -1100 { // URL NOT FOUND ON SERVER
+            webView.loadHTMLString("""
+            <html>
+                <head>
+                    <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
+                </head>
+
+                <body>
+                    <span style="font-family:arial,helvetica,sans-serif;">
+            
+            
+            
+                        <span style="font-family:arial,helvetica,sans-serif;">
+                            <h1>Uh oh!</h1>
+                            The URL cannot be Found on Server
+                            <br>
+                            check if you typed in the url correctly!
+                            <p>&nbsp;</p>
+            
+                        </span>
+                    </span>
+                </body>
+            </html>
+""", baseURL: URL(string: "about:blank"))
+        } else {
+            print(nserr.code)
+            webView.loadHTMLString("""
+            <html>
+                <head>
+                    <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
+                </head>
+                            <body><div class="lr_dct_ent vmod XpoqFe" data-hveid="CAIQBw"><div class="dDoNo gsrt" style="margin-bottom:0;line-height:normal"><h1>Unknown Error</h1></div><div class="vmod"><div class="lr_dct_ent_ph"><span class="lr_dct_ph XpoqFe">/<span>ʌnˈnəʊn&nbsp;ˈɛrə</span>/</span></div><div class="vmod"><div class="xpdxpnd vk_gy" data-mh="-1" aria-hidden="true"><span>adjective: <b>unknown</b></span></div><ol class="lr_dct_sf_sens"><li><div class="vmod"><div class="lr_dct_sf_sen Uekwlc XpoqFe"><div style="margin-left:20px"><div class="PNlCoe XpoqFe"><div style="display:inline" data-dobid="dfn"><span>We honestly have no idea what has happened.</span></div><span class="vmod"><div class="vk_gy">I have no clue on how to program... hurr durr, what is a sea plus plus?</div></span><div class="vmod"></div></div></div></div></div></li></ol></div></div></div></body></html>
+            
+                        </span>
+                    </span>
+                </body>
+            </html>
+""", baseURL: URL(string: "about:blank"))
         }
-    }*/
+    }
     
     
     //-----------------------------------------------------------------------------------------//
@@ -106,17 +199,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     @IBOutlet var myURL: NSTextField!
     
     
+    
     // Function declarations:
     
     // Here i present...!
     // The *amazing* Error Handler that i spent wayyy too much time researching on how to make it.
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+    // lets just say i got it correct the first time but turns out something else was breaking it
+    /*func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         //let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
         // i was an idiot and i did not pick up on the fact that if you were offline it could not display the error page.
+        print("error was: LOOK BELOW")
+        error
+        print("DONE")
         webView.loadHTMLString("""
             <html>
                 <head>
-                    <title>Whoops!</title>
+                    <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
                 </head>
 
                 <body>
@@ -130,6 +228,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
                             Checking if you spelled the address correctly
                             <br>
                             or if you are connected to the internet
+                            <br>
+                            <br>
+                            TODO: MAKE BETTER ERROR PAGE
                             <p>&nbsp;</p>
             
                         </span>
@@ -140,16 +241,39 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
         // TODO:
         // 1. make pages for specific errors
         // 2. make it pickup on the error and display the page for that specific error
-    }
+    }*/
     // Super cool, am i right?
     
     var estWebload = 0
     
 
+    @IBAction func DownloadPage(_ sender: Any) {
+        let config = URLSessionConfiguration.background(withIdentifier: "com.jewel.downloadin.background")
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
+        let task = session.downloadTask(with: URL(string: myURL.stringValue)!)
+        task.resume()
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse,
+                 decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        if let response = navigationResponse.response as? HTTPURLResponse {
+            if response.statusCode == 404 {
+                // ...
+            }
+        }
+        decisionHandler(.allow)
+    }
     
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
+            
+            
+            
+            //if var myURL = NSURL(string: "https://github.com/Xenthio/Jewel/releases/download/v1.1/Jewel.zip") {
+            //    Downloader.load(myURL)
+            //}
             
             progressView.startAnimation(self)
             //print(webView.url) //used for debugging. re-enable if needed
@@ -158,6 +282,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             progressView.doubleValue = webView.estimatedProgress * 100 // basicly converts the 1.000 into 100.0
             // TODO: Make loading bar smoothly animated
             print(webView.estimatedProgress)
+            print("Wazzap")
+            print(webView.customUserAgent!)
             myURL.stringValue = (webView.url?.absoluteString)! // Updates the url bar to show current page
             myURL.takeStringValueFrom(webView.url)
             urHome.isHidden = true
@@ -189,9 +315,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
     var repeatTimes = 0
     
     @IBAction func myURLonenter(_ sender: Any) {
+        //webView.configuration.
         if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
             // Detects if it's a URL
-            webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
             let request = URLRequest(url: URL(string: myURL.stringValue)!)
             webView?.load(request)
             print("Contains a url!")
@@ -201,7 +327,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
             
             if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
                 // Detects if it's a URL
-                webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
                 let theCurrentURL = "https://" + myURL.stringValue
                 let request = URLRequest(url: URL(string: theCurrentURL )!)
                 webView?.load(request)
@@ -228,7 +353,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
         
         if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
             // Detects if it's a URL
-            webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
             let request = URLRequest(url: URL(string: myURL.stringValue)!)
             webView?.load(request)
             print("Contains a url!")
@@ -237,7 +361,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate {
         } else {
             if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
                 // Detects if it's a URL
-                webView?.customUserAgent = "the Super cool modern Web-Browser Ecks Dee version 4.20 premium w/ html5 and css 2019 edition"
                 let theCurrentURL = "https://" + myURL.stringValue
                 let request = URLRequest(url: URL(string: theCurrentURL )!)
                 webView?.load(request)

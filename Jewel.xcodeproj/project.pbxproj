@@ -140,6 +140,7 @@
 				AAAB3E992213FE20004C783C /* Sources */,
 				AAAB3E9A2213FE20004C783C /* Frameworks */,
 				AAAB3E9B2213FE20004C783C /* Resources */,
+				AA5CB69A2230AABD003231A8 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -260,6 +261,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AA5CB69A2230AABD003231A8 /* Set Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AAAB3E992213FE20004C783C /* Sources */ = {
@@ -436,6 +458,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 5M2XXLBE78;
 				INFOPLIST_FILE = Jewel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -445,6 +468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.Jewel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -454,6 +478,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 5M2XXLBE78;
 				INFOPLIST_FILE = Jewel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -463,6 +488,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.Jewel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};
