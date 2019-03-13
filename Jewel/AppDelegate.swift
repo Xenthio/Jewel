@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     
     @IBAction func homepage(_ sender: Any) { // apply settings in settings dialog
         
-        UserDefaults.standard.set(myURL.stringValue, forKey: "Key") //setObject
+        UserDefaults.standard.set(myURL.stringValue, forKey: "Homepage") //setObject
         //UserDefaults.standard.set(homepageis.stringValue, forKey: "URL")
         //defaults.set(homepageis.stringValue, forKey: defaultsKey.keyOne)
     }
@@ -74,8 +74,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         
         //} else {
         //let request = URLRequest(url: URL(string: "https://xenthio.github.io/homepage.html")!)
-        let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Key")!)!)
+        
+        if UserDefaults.standard.string(forKey: "HomePage") != nil {
+            let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Homepage")!)!)
             webView?.load(request) //load the homepage
+        } else {
+            UserDefaults.standard.set("https://xenthio.github.io/homepage.html", forKey: "Homepage")
+            let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Key")!)!)
+            webView?.load(request) //load the homepage
+            UserDefaults.standard.set(true, forKey: "HasBeenLaunchedBefore")
+        }
+        
         //}
         // TODO: Make it so the user can change the homepage.
         print("Launched Successfully")
