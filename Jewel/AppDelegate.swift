@@ -33,7 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     
     @IBAction func homepage(_ sender: Any) { // apply settings in settings dialog
         
-        UserDefaults.standard.set(homepageis.stringValue, forKey: "URL")
+        UserDefaults.standard.set(myURL.stringValue, forKey: "Key") //setObject
+        //UserDefaults.standard.set(homepageis.stringValue, forKey: "URL")
         //defaults.set(homepageis.stringValue, forKey: defaultsKey.keyOne)
     }
     
@@ -42,12 +43,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     }
 
     
+    @IBOutlet var MenuConnect: NSImageView!
+    @IBOutlet var FirstLaunch: NSWindow!
     @IBOutlet var CKRT: NSWindow!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        FirstLaunch?.titleVisibility = .hidden
+        FirstLaunch?.styleMask.insert(.fullSizeContentView)
+        FirstLaunch?.titlebarAppearsTransparent = true
+        FirstLaunch?.contentView?.wantsLayer = true
+        FirstLaunch?.contentView?.layer?.contents = NSImage(named: NSImage.Name("maxresdefault"))
+        let customToolbar = NSToolbar()
+        Winderps?.titleVisibility = .hidden
+        Winderps?.toolbar = customToolbar
 
-
-        
+        //if UserDefaults.standard.string(forKey: "Key") == nil {
+        //homepageis.stringValue = "https://xenthio.github.io/homepage.html"
+        //} else {
+        //homepageis.stringValue = UserDefaults.standard.string(forKey: "Key")!
+        //}
         self.webView.navigationDelegate = self
         webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15"
         // test for custom homepage
@@ -59,14 +73,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         //    webView?.load(request)  // Some String Value
         
         //} else {
-            let request = URLRequest(url: URL(string: "https://xenthio.github.io/homepage.html")!)
+        //let request = URLRequest(url: URL(string: "https://xenthio.github.io/homepage.html")!)
+        let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Key")!)!)
             webView?.load(request) //load the homepage
         //}
         // TODO: Make it so the user can change the homepage.
         print("Launched Successfully")
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             self.webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) // delayed so that the URL bar is blank
         })
+        
 
         
         
@@ -197,6 +214,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     @IBOutlet var isSecure: NSButton!
     @IBOutlet var progressView: NSProgressIndicator!
     @IBOutlet var myURL: NSTextField!
+    @IBOutlet var menupopup: NSView!
+    @IBOutlet var sidemenubg: NSVisualEffectView!
+    @IBOutlet var sidemenu: NSScrollView!
+    @IBOutlet var ToolMenu: NSBox!
     
     
     
@@ -287,12 +308,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             myURL.stringValue = (webView.url?.absoluteString)! // Updates the url bar to show current page
             myURL.takeStringValueFrom(webView.url)
             urHome.isHidden = true
-            print((webView.serverTrust! as! String)+" is trust?")
-            if webView.hasOnlySecureContent {
-                isSecure.isHidden = false
-            } else {
-                isSecure.isHidden = true
-            } // fix because it does not work for some reason
+            //print((webView.serverTrust! as! String)+" is trust?")
+            
+            DispatchQueue.main.async {
+                if self.webView.hasOnlySecureContent {
+                    self.isSecure.isHidden = false
+                } else {
+                    self.isSecure.isHidden = true
+                } // fix because it does not work for some reason
+            }
             title.stringValue = webView.title!
             if webView.estimatedProgress == 1.0 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
@@ -308,8 +332,51 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         }
     }
     
+    @IBOutlet var ToolsButton2: NSButton!
+    @IBOutlet var ToolsButton1: NSButton!
+    @IBOutlet var ToolsLabel: NSTextField!
+    @IBOutlet var MenuButtonVAR: NSButton!
+    @IBOutlet var Tools: NSWindow!
+    var MenuIsOpen = false
+    //var newsize: NSSize!
+    @IBAction func MenuButton(_ sender: Any) {
+        //print(sidemenu.frame.height)
+        print("HELLO - THIS IS A MARKER")
+        if MenuIsOpen == true {
+            print("MENU CLOSED")
+            MenuConnect.isHidden = true
+            ToolMenu.isHidden = true
+            ToolsLabel.isHidden = true
+            ToolsButton1.isHidden = true
+            ToolsButton2.isHidden = true
+            //Tools.setIsVisible(false)
+            //sidemenu.isHidden = true
+            //sidemenubg.isHidden = true
+           // repeat {
+                //usleep(1000)
+                //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            //    newsize = NSMakeSize(sidemenu.frame.width, sidemenu.frame.height - 1)
+             //   sidemenu.setFrameSize(newsize)
+             //   print(sidemenu.frame.height)
+             //   print("Marker 2")
+                
+                //}
+            //} while sidemenu.frame.height != 1
+            MenuIsOpen = false
+        } else {
+            print("MENU OPEN")
+            MenuConnect.isHidden = false
+            ToolMenu.isHidden = false
+            ToolsLabel.isHidden = false
+            ToolsButton1.isHidden = false
+            ToolsButton2.isHidden = false
+            //sidemenu.isHidden = false
+            //sidemenubg.isHidden = false
+            MenuIsOpen = true
+        }
+    }
     
-
+    
     
     
     var repeatTimes = 0
