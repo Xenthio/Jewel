@@ -415,7 +415,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             }
         } else {
             
-            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") || myURL.stringValue.contains(".gio") || myURL.stringValue.contains(".it") || myURL.stringValue.contains(".it") {
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") || myURL.stringValue.contains(".gio") || myURL.stringValue.contains(".it") || myURL.stringValue.contains(".js") {
                 // Detects if it's a URL
                 if myURL.stringValue.contains(".gio") {
                     
