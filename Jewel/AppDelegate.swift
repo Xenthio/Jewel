@@ -220,7 +220,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     @IBOutlet var urHome: NSButton!
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet var isSecure: NSButton!
+    @IBOutlet var isSecure: NSImageView!
     @IBOutlet var progressView: NSProgressIndicator!
     @IBOutlet var myURL: NSTextField!
     @IBOutlet var menupopup: NSView!
@@ -299,7 +299,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
             
-            
+
             
             //if var myURL = NSURL(string: "https://github.com/Xenthio/Jewel/releases/download/v1.1/Jewel.zip") {
             //    Downloader.load(myURL)
@@ -313,10 +313,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             // TODO: Make loading bar smoothly animated
             print(webView.estimatedProgress)
             print("Wazzap")
-            print(webView.customUserAgent!)
+            //print(webView.customUserAgent!)
             myURL.stringValue = (webView.url?.absoluteString)! // Updates the url bar to show current page
-            myURL.takeStringValueFrom(webView.url)
-            urHome.isHidden = true
+            //myURL.takeStringValueFrom(webView.url)
+            //urHome.isHidden = true
+            //let CurrentPage = webView.url?.absoluteString
+            let NEWURL = myURL.stringValue.replacingOccurrences(of: ".github.io", with: ".gio")
+            myURL.stringValue = NEWURL
+            //myURL.takeStringValueFrom(NEWURL)
+            //print("NEWURL = \(url!)")
             //print((webView.serverTrust! as! String)+" is trust?")
             
             DispatchQueue.main.async {
@@ -326,7 +331,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
                     self.isSecure.isHidden = true
                 } // fix because it does not work for some reason
             }
-            title.stringValue = webView.title!
+            //title.stringValue = webView.title!
             if webView.estimatedProgress == 1.0 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     self.progressView.doubleValue = 0.1
@@ -385,13 +390,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         }
     }
     
-    
+    var IsADotJewel = false
     
     
     var repeatTimes = 0
     
     @IBAction func myURLonenter(_ sender: Any) {
-        //webView.configuration.
         if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
             // Detects if it's a URL
             let request = URLRequest(url: URL(string: myURL.stringValue)!)
@@ -399,13 +403,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             print("Contains a url!")
             repeatTimes = 0
             print("System-Utility: Loaded " + myURL.stringValue + " successfully")
-        } else {
-            
-            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
-                // Detects if it's a URL
-                let theCurrentURL = "https://" + myURL.stringValue
+            if myURL.stringValue.contains(".gio") {
+                
+                let theCurrentURL = myURL.stringValue.replacingOccurrences(of: ".gio", with: ".github.io")
                 let request = URLRequest(url: URL(string: theCurrentURL )!)
                 webView?.load(request)
+            } else {
+                let theCurrentURL = myURL.stringValue
+                let request = URLRequest(url: URL(string: theCurrentURL )!)
+                webView?.load(request)
+            }
+        } else {
+            
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") || myURL.stringValue.contains(".gio") || myURL.stringValue.contains(".it") || myURL.stringValue.contains(".it") {
+                // Detects if it's a URL
+                if myURL.stringValue.contains(".gio") {
+                    
+                    let theCurrentURL = "https://" + myURL.stringValue.replacingOccurrences(of: ".gio", with: ".github.io")
+                    let request = URLRequest(url: URL(string: theCurrentURL )!)
+                    webView?.load(request)
+                } else {
+                    let theCurrentURL = "https://" + myURL.stringValue
+                    let request = URLRequest(url: URL(string: theCurrentURL )!)
+                    webView?.load(request)
+                }
+                
                 print("Contains a url!")
                 repeatTimes = 0
                 print("System-Utility: Loaded " + myURL.stringValue + " successfully")
@@ -417,7 +439,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
                 
                 webView?.load(request)
             }
-            
         }
     } // Loads URL input when Enter is pressed
     
@@ -434,12 +455,31 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             print("Contains a url!")
             repeatTimes = 0
             print("System-Utility: Loaded " + myURL.stringValue + " successfully")
-        } else {
-            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
-                // Detects if it's a URL
-                let theCurrentURL = "https://" + myURL.stringValue
+            if myURL.stringValue.contains(".gio") {
+                
+                let theCurrentURL = myURL.stringValue.replacingOccurrences(of: ".gio", with: ".github.io")
                 let request = URLRequest(url: URL(string: theCurrentURL )!)
                 webView?.load(request)
+            } else {
+                let theCurrentURL = myURL.stringValue
+                let request = URLRequest(url: URL(string: theCurrentURL )!)
+                webView?.load(request)
+            }
+        } else {
+            
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") || myURL.stringValue.contains(".gio") || myURL.stringValue.contains(".it") || myURL.stringValue.contains(".js") {
+                // Detects if it's a URL
+                if myURL.stringValue.contains(".gio") {
+                    
+                    let theCurrentURL = "https://" + myURL.stringValue.replacingOccurrences(of: ".gio", with: ".github.io")
+                    let request = URLRequest(url: URL(string: theCurrentURL )!)
+                    webView?.load(request)
+                } else {
+                    let theCurrentURL = "https://" + myURL.stringValue
+                    let request = URLRequest(url: URL(string: theCurrentURL )!)
+                    webView?.load(request)
+                }
+                
                 print("Contains a url!")
                 repeatTimes = 0
                 print("System-Utility: Loaded " + myURL.stringValue + " successfully")
@@ -460,6 +500,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     
     // ;)
 
+    @IBAction func HomeButton(_ sender: Any) {
+        
+ 
+            let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Homepage")!)!)
+            webView?.load(request) //load the homepage
+
+        
+    }
 }
 
 //Ethan was Here

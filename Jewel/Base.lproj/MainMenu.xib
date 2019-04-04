@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14490.70"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +28,7 @@
                 <outlet property="clickers" destination="APE-DB-eLR" id="4gQ-rR-JPr"/>
                 <outlet property="clickies" destination="9an-Qj-oEV" id="hm9-SG-VP0"/>
                 <outlet property="costiesText" destination="em8-Ak-nnV" id="bmn-JI-flx"/>
-                <outlet property="isSecure" destination="qwd-9c-UtW" id="oeb-P3-bov"/>
+                <outlet property="isSecure" destination="21t-Et-SYp" id="YgM-za-hk5"/>
                 <outlet property="myURL" destination="ijp-Jm-fdU" id="Gjn-kN-u6e"/>
                 <outlet property="progressView" destination="pfe-YK-CNU" id="xpO-nO-U07"/>
                 <outlet property="webView" destination="HmI-zt-9bB" id="7BT-gm-FOv"/>
@@ -602,7 +602,7 @@
                             <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
-                                    <action selector="toggleSourceList:" target="-1" id="iwa-gc-5KM"/>
+                                    <action selector="toggleSidebar:" target="-1" id="iwa-gc-5KM"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -618,6 +618,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
                         <items>
+                            <menuItem title="Go Home" id="gHY-ZU-HDR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="HomeButton:" target="Voe-Tx-rLC" id="EMY-Iv-x4g"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
                                 <connections>
                                     <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
@@ -654,11 +660,11 @@
             </items>
             <point key="canvasLocation" x="51" y="173"/>
         </menu>
-        <window title="Jewel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="0Dp-Pq-lQw">
+        <window title="Jewel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" appearanceType="darkAqua" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="0Dp-Pq-lQw">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <rect key="contentRect" x="392" y="255" width="574" height="384"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
-            <view key="contentView" id="Klp-nW-0ck">
+            <view key="contentView" wantsLayer="YES" id="Klp-nW-0ck">
                 <rect key="frame" x="0.0" y="0.0" width="574" height="384"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -666,7 +672,7 @@
                         <rect key="frame" x="111" y="354" width="316" height="18"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="Type a URL or search Google" drawsBackground="YES" id="gPj-n8-OPS">
-                            <font key="font" usesAppearanceFont="YES"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -692,6 +698,7 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
+                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                         <connections>
                             <action selector="reload:" target="gjC-P4-QZF" id="i94-Zk-01D"/>
                         </connections>
@@ -699,15 +706,16 @@
                     <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="pfe-YK-CNU">
                         <rect key="frame" x="111" y="364" width="316" height="20"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <contentFilters>
+                            <ciFilter name="CIMotionBlur">
+                                <configuration>
+                                    <real key="inputAngle" value="0.0"/>
+                                    <null key="inputImage"/>
+                                    <real key="inputRadius" value="2"/>
+                                </configuration>
+                            </ciFilter>
+                        </contentFilters>
                     </progressIndicator>
-                    <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwd-9c-UtW">
-                        <rect key="frame" x="515" y="359" width="13" height="10"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockLockedTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="G8C-GT-aWI">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjC-P4-QZF">
                         <rect key="frame" x="285" y="-85" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -716,7 +724,7 @@
                             <wkPreferences key="preferences"/>
                         </wkWebViewConfiguration>
                     </wkWebView>
-                    <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HmI-zt-9bB">
+                    <wkWebView wantsLayer="YES" fixedFrame="YES" customUserAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15" translatesAutoresizingMaskIntoConstraints="NO" id="HmI-zt-9bB">
                         <rect key="frame" x="0.0" y="0.0" width="574" height="345"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <wkWebViewConfiguration key="configuration">
@@ -731,6 +739,7 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
+                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                         <connections>
                             <action selector="MenuButton:" target="Voe-Tx-rLC" id="4Ef-Lk-sLH"/>
                         </connections>
@@ -747,7 +756,7 @@
                         </connections>
                     </button>
                     <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="phk-OV-O9b">
-                        <rect key="frame" x="517" y="267" width="71" height="117"/>
+                        <rect key="frame" x="545" y="267" width="23" height="117"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSTouchBarGoUpTemplate" id="apz-Tx-nqF"/>
                         <color key="contentTintColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -792,16 +801,23 @@
                                 </button>
                             </subviews>
                         </view>
+                        <color key="borderColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </box>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21t-Et-SYp">
+                        <rect key="frame" x="111" y="358" width="310" height="11"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyDown" image="NSLockLockedTemplate" id="ndg-6F-JqT"/>
+                        <color key="contentTintColor" red="0.71104296417707702" green="0.91132614213197971" blue="0.68410424851361062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="141" y="410"/>
         </window>
-        <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
+        <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="0.0" width="175" height="189"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="683" y="359" width="175" height="189"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="hIl-VV-vwO">
                 <rect key="frame" x="0.0" y="0.0" width="175" height="189"/>
@@ -814,6 +830,7 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
+                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                         <connections>
                             <action selector="clicky:" target="Voe-Tx-rLC" id="j74-nG-Xw7"/>
                         </connections>
@@ -901,6 +918,15 @@
             </view>
             <point key="canvasLocation" x="107" y="819"/>
         </window>
+        <button id="5Mf-ra-peD">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="hPQ-WA-fgR">
+                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+            <point key="canvasLocation" x="434" y="186"/>
+        </button>
     </objects>
     <resources>
         <image name="NSGoBackTemplate" width="9" height="12"/>

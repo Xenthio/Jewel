@@ -202,6 +202,7 @@
 				TargetAttributes = {
 					AAAB3E9C2213FE20004C783C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -210,10 +211,12 @@
 					};
 					AAAB3EAC2213FE26004C783C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = AAAB3E9C2213FE20004C783C;
 					};
 					AAAB3EB72213FE26004C783C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = AAAB3E9C2213FE20004C783C;
 					};
 				};
@@ -471,7 +474,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.Jewel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
@@ -491,7 +494,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.Jewel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
@@ -512,7 +515,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.JewelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jewel.app/Contents/MacOS/Jewel";
 			};
 			name = Debug;
@@ -533,7 +536,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.JewelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jewel.app/Contents/MacOS/Jewel";
 			};
 			name = Release;
@@ -553,7 +556,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.JewelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Jewel;
 			};
 			name = Debug;
@@ -573,7 +576,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xenthio.JewelUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Jewel;
 			};
 			name = Release;
