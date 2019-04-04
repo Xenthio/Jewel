@@ -10,7 +10,13 @@ You can use it to learn how to use WKWebView in swift or an alternative to safar
 
 **TODO:**
 
-- [ ] User can set own homepage
+- [X] User can set own homepage
 - [X] Error Page now shows a different page depending on the Error instead of just saying "an error occoured"
-- [x] User is able to see the current URL for the page they are on
-- [x] (sort of) Browser does not require "https://" or "http://" in the url for it to load as a url
+- [X] User is able to see the current URL for the page they are on
+- [X] (sort of) Browser does not require "https://" or "http://" in the url for it to load as a url
+- [X] Permanent Settings
+- [ ] Download Handler so user can download files.
+
+**EXTRA UNNECESSARY FEATURES:**
+- I got tired of typing (something).github.io when i needed so now you just typing (something).gio
+      
