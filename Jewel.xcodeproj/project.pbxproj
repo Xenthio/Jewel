@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA4008222272AF4E00D73F2D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4008212272AF4E00D73F2D /* WebKit.framework */; };
 		AA7D3E47221E1C01005DA78C /* mainJewelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7D3E46221E1C01005DA78C /* mainJewelView.xib */; };
 		AA7D3E49221E1D4B005DA78C /* mainJewelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D3E48221E1D4B005DA78C /* mainJewelView.swift */; };
 		AA8C0E53221689B1003AE8B1 /* TestWKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8C0E52221689B0003AE8B1 /* TestWKView.swift */; };
@@ -16,6 +17,7 @@
 		AAAB3EA62213FE26004C783C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAB3EA42213FE26004C783C /* MainMenu.xib */; };
 		AAAB3EB22213FE26004C783C /* JewelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB3EB12213FE26004C783C /* JewelTests.swift */; };
 		AAAB3EBD2213FE26004C783C /* JewelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB3EBC2213FE26004C783C /* JewelUITests.swift */; };
+		AAEC00002256DC57008D8B75 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAECFFFF2256DC57008D8B75 /* View.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA4008212272AF4E00D73F2D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		AA7D3E46221E1C01005DA78C /* mainJewelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = mainJewelView.xib; sourceTree = "<group>"; };
 		AA7D3E48221E1D4B005DA78C /* mainJewelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainJewelView.swift; sourceTree = "<group>"; };
 		AA8C0E52221689B0003AE8B1 /* TestWKView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWKView.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		AAAB3EB82213FE26004C783C /* JewelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JewelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB3EBC2213FE26004C783C /* JewelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelUITests.swift; sourceTree = "<group>"; };
 		AAAB3EBE2213FE26004C783C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAECFFFF2256DC57008D8B75 /* View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4008222272AF4E00D73F2D /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA4008202272AF4D00D73F2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA4008212272AF4E00D73F2D /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AAAB3E942213FE20004C783C = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +99,7 @@
 				AAAB3EB02213FE26004C783C /* JewelTests */,
 				AAAB3EBB2213FE26004C783C /* JewelUITests */,
 				AAAB3E9E2213FE20004C783C /* Products */,
+				AA4008202272AF4D00D73F2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +125,7 @@
 				AA8C0E52221689B0003AE8B1 /* TestWKView.swift */,
 				AA7D3E46221E1C01005DA78C /* mainJewelView.xib */,
 				AA7D3E48221E1D4B005DA78C /* mainJewelView.swift */,
+				AAECFFFF2256DC57008D8B75 /* View.xib */,
 			);
 			path = Jewel;
 			sourceTree = "<group>";
@@ -247,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA7D3E47221E1C01005DA78C /* mainJewelView.xib in Resources */,
+				AAEC00002256DC57008D8B75 /* View.xib in Resources */,
 				AA9C7CC42238C7CD004F7D59 /* maxresdefault.jpg in Resources */,
 				AAAB3EA32213FE26004C783C /* Assets.xcassets in Resources */,
 				AAAB3EA62213FE26004C783C /* MainMenu.xib in Resources */,

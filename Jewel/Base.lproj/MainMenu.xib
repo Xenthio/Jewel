@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14490.70"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,20 +17,11 @@
             <connections>
                 <outlet property="CKRT" destination="f05-ZW-NN7" id="DJW-Ct-cHw"/>
                 <outlet property="FirstLaunch" destination="UHF-Nd-1KK" id="APH-iQ-Sqf"/>
-                <outlet property="MenuButtonVAR" destination="oKD-z0-0Ul" id="F3J-r1-6l4"/>
-                <outlet property="MenuConnect" destination="phk-OV-O9b" id="Kiu-Il-Uig"/>
-                <outlet property="ToolMenu" destination="sa3-QW-xAH" id="yHV-lP-bCe"/>
-                <outlet property="ToolsButton1" destination="iu9-kN-MMV" id="dll-1F-Zwc"/>
-                <outlet property="ToolsButton2" destination="AEY-TJ-GZd" id="gfh-YN-hgU"/>
-                <outlet property="ToolsLabel" destination="1xX-8M-vNB" id="9dQ-gB-yvM"/>
-                <outlet property="Winderps" destination="0Dp-Pq-lQw" id="HwM-P1-VLF"/>
+                <outlet property="NewTabTemplate" destination="Hux-Tg-4N0" id="Eq3-Md-AdX"/>
+                <outlet property="Tabs" destination="GAZ-tH-nOg" id="BwS-AD-cD4"/>
                 <outlet property="clickers" destination="APE-DB-eLR" id="4gQ-rR-JPr"/>
                 <outlet property="clickies" destination="9an-Qj-oEV" id="hm9-SG-VP0"/>
                 <outlet property="costiesText" destination="em8-Ak-nnV" id="bmn-JI-flx"/>
-                <outlet property="isSecure" destination="21t-Et-SYp" id="YgM-za-hk5"/>
-                <outlet property="myURL" destination="ijp-Jm-fdU" id="Gjn-kN-u6e"/>
-                <outlet property="progressView" destination="pfe-YK-CNU" id="xpO-nO-U07"/>
-                <outlet property="webView" destination="HmI-zt-9bB" id="7BT-gm-FOv"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -660,165 +650,11 @@
             </items>
             <point key="canvasLocation" x="51" y="173"/>
         </menu>
-        <window title="Jewel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" appearanceType="darkAqua" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="0Dp-Pq-lQw">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
-            <rect key="contentRect" x="392" y="255" width="574" height="384"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
-            <view key="contentView" wantsLayer="YES" id="Klp-nW-0ck">
-                <rect key="frame" x="0.0" y="0.0" width="574" height="384"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijp-Jm-fdU">
-                        <rect key="frame" x="111" y="354" width="316" height="18"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="Type a URL or search Google" drawsBackground="YES" id="gPj-n8-OPS">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="myURLonenter:" target="Voe-Tx-rLC" id="rq1-XY-COz"/>
-                        </connections>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JfK-lj-swY">
-                        <rect key="frame" x="435" y="354" width="32" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoForwardTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u4g-Tz-n48">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="GoButton:" target="Voe-Tx-rLC" id="onp-j7-Iga"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dro-yD-esL">
-                        <rect key="frame" x="475" y="354" width="32" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f70-i0-2GJ">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
-                        <connections>
-                            <action selector="reload:" target="gjC-P4-QZF" id="i94-Zk-01D"/>
-                        </connections>
-                    </button>
-                    <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="pfe-YK-CNU">
-                        <rect key="frame" x="111" y="364" width="316" height="20"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <contentFilters>
-                            <ciFilter name="CIMotionBlur">
-                                <configuration>
-                                    <real key="inputAngle" value="0.0"/>
-                                    <null key="inputImage"/>
-                                    <real key="inputRadius" value="2"/>
-                                </configuration>
-                            </ciFilter>
-                        </contentFilters>
-                    </progressIndicator>
-                    <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gjC-P4-QZF">
-                        <rect key="frame" x="285" y="-85" width="0.0" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Jewel">
-                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                            <wkPreferences key="preferences"/>
-                        </wkWebViewConfiguration>
-                    </wkWebView>
-                    <wkWebView wantsLayer="YES" fixedFrame="YES" customUserAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15" translatesAutoresizingMaskIntoConstraints="NO" id="HmI-zt-9bB">
-                        <rect key="frame" x="0.0" y="0.0" width="574" height="345"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <wkWebViewConfiguration key="configuration">
-                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                            <wkPreferences key="preferences"/>
-                        </wkWebViewConfiguration>
-                    </wkWebView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKD-z0-0Ul">
-                        <rect key="frame" x="536" y="354" width="32" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c0Z-ad-LcG">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
-                        <connections>
-                            <action selector="MenuButton:" target="Voe-Tx-rLC" id="4Ef-Lk-sLH"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-gH-E69">
-                        <rect key="frame" x="71" y="354" width="32" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p5o-MO-3XY">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="goBack:" target="HmI-zt-9bB" id="tv8-Dj-tt0"/>
-                        </connections>
-                    </button>
-                    <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="phk-OV-O9b">
-                        <rect key="frame" x="545" y="267" width="23" height="117"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSTouchBarGoUpTemplate" id="apz-Tx-nqF"/>
-                        <color key="contentTintColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </imageView>
-                    <box hidden="YES" fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="sa3-QW-xAH">
-                        <rect key="frame" x="443" y="267" width="130" height="72"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <view key="contentView" ambiguous="YES" id="6gJ-vV-At6">
-                            <rect key="frame" x="1" y="1" width="128" height="70"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xX-8M-vNB">
-                                    <rect key="frame" x="3" y="51" width="37" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Tools" id="A4R-D2-0WX">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AEY-TJ-GZd">
-                                    <rect key="frame" x="4" y="6" width="121" height="19"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="roundRect" title="Sample" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dR3-Eu-efU">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="cellTitle"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="homepage:" target="Voe-Tx-rLC" id="92N-YR-zTi"/>
-                                    </connections>
-                                </button>
-                                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iu9-kN-MMV">
-                                    <rect key="frame" x="4" y="29" width="121" height="19"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="roundRect" title="Set Homepage" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RHp-9q-bbh">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="cellTitle"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="homepage:" target="Voe-Tx-rLC" id="DCL-0J-b6M"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </view>
-                        <color key="borderColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </box>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21t-Et-SYp">
-                        <rect key="frame" x="111" y="358" width="310" height="11"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyDown" image="NSLockLockedTemplate" id="ndg-6F-JqT"/>
-                        <color key="contentTintColor" red="0.71104296417707702" green="0.91132614213197971" blue="0.68410424851361062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </imageView>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="141" y="410"/>
-        </window>
-        <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
+        <window title="Secret" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="f05-ZW-NN7" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="683" y="359" width="175" height="189"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="hIl-VV-vwO">
                 <rect key="frame" x="0.0" y="0.0" width="175" height="189"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -892,7 +728,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="109" y="138" width="506" height="292"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="6Ty-aH-pw7">
                 <rect key="frame" x="0.0" y="0.0" width="506" height="292"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -927,13 +763,50 @@
             </buttonCell>
             <point key="canvasLocation" x="434" y="186"/>
         </button>
+        <window title="Jewel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" appearanceType="darkAqua" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="vGD-9e-7k1">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <rect key="contentRect" x="392" y="255" width="591" height="372"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <view key="contentView" wantsLayer="YES" id="5tS-Vr-VbK">
+                <rect key="frame" x="0.0" y="0.0" width="591" height="372"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAZ-tH-nOg">
+                        <rect key="frame" x="-8" y="-10" width="607" height="388"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="Tab" identifier="" id="E6g-xE-aWU">
+                                <view key="view" ambiguous="YES" id="8bt-Hs-fty">
+                                    <rect key="frame" x="10" y="33" width="587" height="342"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="149.5" y="404"/>
+        </window>
+        <tabView id="Fk5-C5-9Wf">
+            <rect key="frame" x="0.0" y="0.0" width="193" height="137"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <font key="font" metaFont="system"/>
+            <tabViewItems>
+                <tabViewItem label="View" identifier="" id="Hux-Tg-4N0">
+                    <view key="view" id="h3p-gC-POf">
+                        <rect key="frame" x="10" y="33" width="173" height="91"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oO9-e3-2Qf" customClass="mainJewelView" customModule="Jewel" customModuleProvider="target">
+                                <rect key="frame" x="-3" y="-3" width="179" height="103"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </customView>
+                        </subviews>
+                    </view>
+                </tabViewItem>
+            </tabViewItems>
+            <point key="canvasLocation" x="585.5" y="130.5"/>
+        </tabView>
     </objects>
-    <resources>
-        <image name="NSGoBackTemplate" width="9" height="12"/>
-        <image name="NSGoForwardTemplate" width="9" height="12"/>
-        <image name="NSIconViewTemplate" width="14" height="10"/>
-        <image name="NSLockLockedTemplate" width="10" height="14"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSTouchBarGoUpTemplate" width="16" height="30"/>
-    </resources>
 </document>

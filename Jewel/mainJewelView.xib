@@ -1,93 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14490.70"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="mainJewelView" customModule="Jewel" customModuleProvider="target">
+            <connections>
+                <outlet property="MenuButtonVAR" destination="3rr-0Y-eeF" id="VUb-Mc-X5J"/>
+                <outlet property="MenuConnect" destination="hcl-Mb-CrF" id="0zS-Mc-9gI"/>
+                <outlet property="ToolMenu" destination="M5J-7s-bF6" id="eDg-bz-W8K"/>
+                <outlet property="ToolsButton1" destination="sI2-dQ-GnG" id="X56-Y3-NgM"/>
+                <outlet property="ToolsButton2" destination="QbO-hX-ihb" id="B5D-pH-Egv"/>
+                <outlet property="ToolsLabel" destination="HpF-YS-NDY" id="5dN-Vg-BtV"/>
+                <outlet property="contentView" destination="c22-O7-iKe" id="uer-0O-Dkk"/>
+                <outlet property="isSecure" destination="IfX-Qe-YZy" id="k22-c8-k2d"/>
+                <outlet property="myURL" destination="0my-7C-8br" id="rqj-w9-Z5S"/>
+                <outlet property="progressView" destination="Lsh-Cm-Bz1" id="gCx-Yu-kdm"/>
+                <outlet property="webView" destination="reV-RB-lUC" id="hYG-gp-6E6"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="574" height="384"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EVM-TF-Cul">
-                    <rect key="frame" x="105" y="354" width="324" height="18"/>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0my-7C-8br">
+                    <rect key="frame" x="48" y="355" width="379" height="18"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="Type a URL or search Google" drawsBackground="YES" id="eSO-uA-7i9">
-                        <font key="font" usesAppearanceFont="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" placeholderString="Type a URL or search Google" drawsBackground="YES" id="h5a-Jc-Tvv">
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="unemphasizedSelectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="myURLonenter:" target="-2" id="UmD-kk-SRp"/>
+                    </connections>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7k-Es-Msk">
-                    <rect key="frame" x="437" y="357" width="32" height="19"/>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-MI-IdS">
+                    <rect key="frame" x="435" y="354" width="32" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoForwardTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yzq-lj-eRt">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MET-lr-GIJ">
-                    <rect key="frame" x="477" y="357" width="32" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E2H-Vj-zDf">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
-                    </buttonCell>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v7L-Kd-3QE">
-                    <rect key="frame" x="538" y="357" width="32" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3q6-Ln-zQA">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
-                    </buttonCell>
-                </button>
-                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="aFK-I3-z3u">
-                    <rect key="frame" x="105" y="366" width="324" height="20"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                </progressIndicator>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jp2-19-lg8">
-                    <rect key="frame" x="-2" y="354" width="72" height="11"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Jewel Beta" id="jb5-os-eDA">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n3a-OT-SYO">
-                    <rect key="frame" x="517" y="362" width="13" height="10"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSLockLockedTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="XhA-CT-GFT">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j43-DS-YyE">
-                    <rect key="frame" x="0.0" y="0.0" width="574" height="350"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <wkWebViewConfiguration key="configuration">
-                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                        <wkPreferences key="preferences"/>
-                    </wkWebViewConfiguration>
-                </wkWebView>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fv7-Eg-1ru">
-                    <rect key="frame" x="65" y="357" width="32" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Cy-nj-Y63">
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoForwardTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Opr-qT-2J4">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
                     <connections>
-                        <action selector="goBack:" target="j43-DS-YyE" id="70l-Ub-KyI"/>
+                        <action selector="GoButton:" target="-2" id="tFV-Cw-fvQ"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OoS-Ca-7ta">
+                    <rect key="frame" x="475" y="354" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSRefreshTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wDk-YY-5pl">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                    <connections>
+                        <action selector="reload:" target="reV-RB-lUC" id="wJg-7w-o1F"/>
+                    </connections>
+                </button>
+                <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Lsh-Cm-Bz1">
+                    <rect key="frame" x="48" y="364" width="379" height="20"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <contentFilters>
+                        <ciFilter name="CIMotionBlur">
+                            <configuration>
+                                <real key="inputAngle" value="0.0"/>
+                                <null key="inputImage"/>
+                                <real key="inputRadius" value="2"/>
+                            </configuration>
+                        </ciFilter>
+                    </contentFilters>
+                </progressIndicator>
+                <wkWebView wantsLayer="YES" fixedFrame="YES" customUserAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15" translatesAutoresizingMaskIntoConstraints="NO" id="reV-RB-lUC">
+                    <rect key="frame" x="0.0" y="0.0" width="574" height="345"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Jewel">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3rr-0Y-eeF">
+                    <rect key="frame" x="536" y="354" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WuW-0z-ryJ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                    <connections>
+                        <action selector="MenuButton:" target="-2" id="EMS-PB-6pA"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6hV-jX-tXP">
+                    <rect key="frame" x="8" y="354" width="32" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSGoBackTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="935-TI-aUe">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="goBack:" target="reV-RB-lUC" id="oXu-FG-BxE"/>
+                    </connections>
+                </button>
+                <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcl-Mb-CrF">
+                    <rect key="frame" x="545" y="267" width="23" height="117"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSTouchBarGoUpTemplate" id="1SV-jJ-rNj"/>
+                    <color key="contentTintColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                </imageView>
+                <box hidden="YES" fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="M5J-7s-bF6">
+                    <rect key="frame" x="443" y="267" width="130" height="72"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <view key="contentView" ambiguous="YES" id="1mC-eR-yFR">
+                        <rect key="frame" x="1" y="1" width="128" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HpF-YS-NDY">
+                                <rect key="frame" x="3" y="51" width="37" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Tools" id="HS8-FV-G0g">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbO-hX-ihb">
+                                <rect key="frame" x="4" y="6" width="121" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="roundRect" title="Sample" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0He-m8-Jhb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                            </button>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sI2-dQ-GnG">
+                                <rect key="frame" x="4" y="29" width="121" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="roundRect" title="Set Homepage" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jSi-va-iiK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="cellTitle"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                    <color key="borderColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                </box>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-Qe-YZy">
+                    <rect key="frame" x="114" y="358" width="310" height="11"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyDown" image="NSLockLockedTemplate" id="9te-uC-p4m"/>
+                    <color key="contentTintColor" red="0.71104296420000002" green="0.91132614209999996" blue="0.68410424849999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
             </subviews>
+            <connections>
+                <outlet property="MenuButtonVAR" destination="3rr-0Y-eeF" id="mWa-rY-ofu"/>
+                <outlet property="MenuConnect" destination="hcl-Mb-CrF" id="fxW-eH-O79"/>
+                <outlet property="ToolMenu" destination="M5J-7s-bF6" id="biu-cZ-Jjm"/>
+                <outlet property="ToolsButton1" destination="sI2-dQ-GnG" id="BSa-cF-DaS"/>
+                <outlet property="ToolsButton2" destination="QbO-hX-ihb" id="y0h-bd-IhG"/>
+                <outlet property="ToolsLabel" destination="HpF-YS-NDY" id="bnx-CD-wTT"/>
+                <outlet property="isSecure" destination="IfX-Qe-YZy" id="NVr-1o-uT4"/>
+                <outlet property="myURL" destination="0my-7C-8br" id="EIp-AZ-iDG"/>
+                <outlet property="progressView" destination="Lsh-Cm-Bz1" id="LXn-4h-Ek5"/>
+                <outlet property="webView" destination="reV-RB-lUC" id="IBi-Ne-Gnf"/>
+            </connections>
             <point key="canvasLocation" x="187" y="210"/>
         </customView>
     </objects>
@@ -97,5 +178,6 @@
         <image name="NSIconViewTemplate" width="14" height="10"/>
         <image name="NSLockLockedTemplate" width="10" height="14"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSTouchBarGoUpTemplate" width="16" height="30"/>
     </resources>
 </document>
