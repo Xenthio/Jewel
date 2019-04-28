@@ -17,76 +17,53 @@ import Foundation
 
 
 
-
-
 //var webView = WKWebView(frame: .zero, configuration: webConfiguration)
 
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSessionDelegate {
-   
+    
+    struct defaultsKeys {
+        static let keyOne = "https://xenthio.github.io/homepage.html"
+    }
+    
+    @IBOutlet weak var homepageis: NSTextField!
     
     
-//    let ToolsButton2 : NSButton!
-//    let ToolsButton1 : NSButton!
-//    let ToolsLabel : NSTextField!
-//    let MenuButtonVAR : NSButton!
-//    //var Tools: NSWindow!
-//    let webView : WKWebView!
-//    let isSecure : NSImageView!
-//    let progressView : NSProgressIndicator!
-//    let myURL : NSTextField!
-//    let ToolMenu : NSBox!
-    @IBOutlet var Jewel: mainJewelView!
-    @IBOutlet weak var Tabs: NSTabView!
     
-    var hi = 0
-    
-    
+    @IBAction func homepage(_ sender: Any) { // apply settings in settings dialog
         
-    lazy var ToolsButton2 = Jewel.ToolsButton2!
-    lazy var ToolsButton1 = Jewel.ToolsButton1!
-    lazy var ToolsLabel = Jewel.ToolsLabel!
-    lazy var MenuButtonVAR = Jewel.MenuButtonVAR!
-    //var Tools: NSWindow!
-    lazy var webView = Jewel.webView!
-    lazy var isSecure = Jewel.isSecure!
-    lazy var progressView = Jewel.progressView!
-    lazy var myURL = Jewel.myURL!
-    lazy var ToolMenu = Jewel.ToolMenu!
-    //lazy var GoButton = Jewel.GoButton((Any).self)
-
-    @IBOutlet weak var NewTabTemplate: NSTabViewItem!
+        UserDefaults.standard.set(myURL.stringValue, forKey: "Homepage") //setObject
+        //UserDefaults.standard.set(homepageis.stringValue, forKey: "URL")
+        //defaults.set(homepageis.stringValue, forKey: defaultsKey.keyOne)
+    }
     
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+
+    
+    @IBOutlet var MenuConnect: NSImageView!
+    @IBOutlet var FirstLaunch: NSWindow!
+    @IBOutlet var CKRT: NSWindow!
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        // TODO: MAKE TABS.
-        // OR TODO: MAKE NEW WINDOW SYSTEM <---- DO THIS FIRST ACTUALLY
-        
-        //Tabs.
-        //NewTabTemplate.label = webView.title!
-        //Tabs.addTabViewItem(NewTabTemplate)
-        Jewel.autoresizingMask = [.width, .height]
-        Jewel.translatesAutoresizingMaskIntoConstraints = true
-        // Create and Add Layout Constraint
-        let leadingConstraint = Jewel.leadingAnchor.constraint(equalTo: Jewel.superview!.leadingAnchor, constant: 8.0)
-        
-        // Activate Layout Constraint
-        leadingConstraint.isActive = true
-//        Jewel.leadingAnchor.constraint(equalTo: Jewel.superview!.leadingAnchor).isActive = true
-//        Jewel.topAnchor.constraint(equalTo: Jewel.superview!.topAnchor).isActive = true
-//        Jewel.bottomAnchor.constraint(equalTo: Jewel.superview!.bottomAnchor).isActive = true
-//        Jewel.trailingAnchor.constraint(equalTo: Jewel.superview!.trailingAnchor).isActive = true
-//
+        FirstLaunch?.titleVisibility = .hidden
+        FirstLaunch?.styleMask.insert(.fullSizeContentView)
+        FirstLaunch?.titlebarAppearsTransparent = true
+        FirstLaunch?.contentView?.wantsLayer = true
+        FirstLaunch?.contentView?.layer?.contents = NSImage(named: NSImage.Name("maxresdefault"))
+        let customToolbar = NSToolbar()
+        Winderps?.titleVisibility = .hidden
+        Winderps?.toolbar = customToolbar
 
-        
         //if UserDefaults.standard.string(forKey: "Key") == nil {
         //homepageis.stringValue = "https://xenthio.github.io/homepage.html"
         //} else {
         //homepageis.stringValue = UserDefaults.standard.string(forKey: "Key")!
         //}
-        Jewel.webView.navigationDelegate = self
-        Jewel.webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15"
+        self.webView.navigationDelegate = self
+        webView?.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15"
         // test for custom homepage
         
         //if let stringOne = defaults.string {
@@ -100,11 +77,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         
         if UserDefaults.standard.string(forKey: "HomePage") != nil {
             let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Homepage")!)!)
-            Jewel.webView?.load(request) //load the homepage
+            webView?.load(request) //load the homepage
         } else {
             UserDefaults.standard.set("https://xenthio.github.io/homepage.html", forKey: "Homepage")
             let request = URLRequest(url: URL(string:  UserDefaults.standard.string(forKey: "Key")!)!)
-            Jewel.webView?.load(request) //load the homepage
+            webView?.load(request) //load the homepage
             UserDefaults.standard.set(true, forKey: "HasBeenLaunchedBefore")
         }
         
@@ -113,8 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         print("Launched Successfully")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
-            self.Jewel.webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) // delayed so that the URL bar is blank
+            self.webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil) // delayed so that the URL bar is blank
         })
+        
+
         
         
     }
@@ -122,79 +101,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
     func applicationWillTerminate(_ aNotification: Notification) {
         print("Application Closed")
     }
- 
-    
-    
-    struct defaultsKeys {
-        static let keyOne = "https://xenthio.github.io/homepage.html"
-    }
     
     
     
-    
-    
-    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-        return true
-    }
-    
-  
-
-    
-    
-    //-----------------------------------------------------------------------------------------//
-    //                                 The main code for Jewel                                 //
-    //-----------------------------------------------------------------------------------------//
-    
-    // Varable declarations:
-
-    
-    
-    
-    // Function declarations:
-    
-    // Here i present...!
-    // The *amazing* Error Handler that i spent wayyy too much time researching on how to make it.
-    // lets just say i got it correct the first time but turns out something else was breaking it
-    /*func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-     //let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
-     // i was an idiot and i did not pick up on the fact that if you were offline it could not display the error page.
-     print("error was: LOOK BELOW")
-     error
-     print("DONE")
-     webView.loadHTMLString("""
-     <html>
-     <head>
-     <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
-     </head>
-     
-     <body>
-     <span style="font-family:arial,helvetica,sans-serif;">
-     
-     
-     
-     <span style="font-family:arial,helvetica,sans-serif;">
-     <h1>Oh no! There was an Error!</h1>
-     <h4>You could Try:</h4>
-     Checking if you spelled the address correctly
-     <br>
-     or if you are connected to the internet
-     <br>
-     <br>
-     TODO: MAKE BETTER ERROR PAGE
-     <p>&nbsp;</p>
-     
-     </span>
-     </span>
-     </body>
-     </html>
-     """, baseURL: URL(string: "about:blank"))
-     // TODO:
-     // 1. make pages for specific errors
-     // 2. make it pickup on the error and display the page for that specific error
-     }*/
-    // Super cool, am i right?
-    
-    var estWebload = 0
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         let nserr = error as NSError
         if nserr.code == -1001 { // TIMED OUT:
@@ -300,6 +209,74 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
         }
     }
     
+    
+    //-----------------------------------------------------------------------------------------//
+    //                                 The main code for Jewel                                 //
+    //-----------------------------------------------------------------------------------------//
+    
+    // Varable declarations:
+    @IBOutlet var Winderps: NSWindow!
+    @IBOutlet var title: NSTextField!
+    @IBOutlet var urHome: NSButton!
+    @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet var isSecure: NSButton!
+    @IBOutlet var progressView: NSProgressIndicator!
+    @IBOutlet var myURL: NSTextField!
+    @IBOutlet var menupopup: NSView!
+    @IBOutlet var sidemenubg: NSVisualEffectView!
+    @IBOutlet var sidemenu: NSScrollView!
+    @IBOutlet var ToolMenu: NSBox!
+    
+    
+    
+    // Function declarations:
+    
+    // Here i present...!
+    // The *amazing* Error Handler that i spent wayyy too much time researching on how to make it.
+    // lets just say i got it correct the first time but turns out something else was breaking it
+    /*func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        //let request = URLRequest(url: URL(string: "https://xenthio.github.io/error.html")!)
+        // i was an idiot and i did not pick up on the fact that if you were offline it could not display the error page.
+        print("error was: LOOK BELOW")
+        error
+        print("DONE")
+        webView.loadHTMLString("""
+            <html>
+                <head>
+                    <title>Whoops! i dont think you should be able to see the title as well what the heck???</title>
+                </head>
+
+                <body>
+                    <span style="font-family:arial,helvetica,sans-serif;">
+            
+            
+            
+                        <span style="font-family:arial,helvetica,sans-serif;">
+                            <h1>Oh no! There was an Error!</h1>
+                            <h4>You could Try:</h4>
+                            Checking if you spelled the address correctly
+                            <br>
+                            or if you are connected to the internet
+                            <br>
+                            <br>
+                            TODO: MAKE BETTER ERROR PAGE
+                            <p>&nbsp;</p>
+            
+                        </span>
+                    </span>
+                </body>
+            </html>
+""", baseURL: URL(string: "about:blank"))
+        // TODO:
+        // 1. make pages for specific errors
+        // 2. make it pickup on the error and display the page for that specific error
+    }*/
+    // Super cool, am i right?
+    
+    var estWebload = 0
+    
+
     @IBAction func DownloadPage(_ sender: Any) {
         let config = URLSessionConfiguration.background(withIdentifier: "com.jewel.downloadin.background")
         let session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
@@ -328,23 +305,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             //    Downloader.load(myURL)
             //}
             
-            Jewel.progressView.startAnimation(self)
+            progressView.startAnimation(self)
             //print(webView.url) //used for debugging. re-enable if needed
-            Jewel.progressView.increment(by: 1.0) //updating the value because otherwise it will be nil.
-            Jewel.progressView.increment(by: -1.0)
-            Jewel.progressView.doubleValue = webView.estimatedProgress * 100 // basicly converts the 1.000 into 100.0
+            progressView.increment(by: 1.0) //updating the value because otherwise it will be nil.
+            progressView.increment(by: -1.0)
+            progressView.doubleValue = webView.estimatedProgress * 100 // basicly converts the 1.000 into 100.0
             // TODO: Make loading bar smoothly animated
             print(webView.estimatedProgress)
             print("Wazzap")
-            //print(webView.customUserAgent!)
+            print(webView.customUserAgent!)
             myURL.stringValue = (webView.url?.absoluteString)! // Updates the url bar to show current page
-            //myURL.takeStringValueFrom(webView.url)
-            //urHome.isHidden = true
-            //let CurrentPage = webView.url?.absoluteString
-            let NEWURL = myURL.stringValue.replacingOccurrences(of: ".github.io", with: ".gio")
-            myURL.stringValue = NEWURL
-            //myURL.takeStringValueFrom(NEWURL)
-            //print("NEWURL = \(url!)")
+            myURL.takeStringValueFrom(webView.url)
+            urHome.isHidden = true
             //print((webView.serverTrust! as! String)+" is trust?")
             
             DispatchQueue.main.async {
@@ -354,7 +326,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
                     self.isSecure.isHidden = true
                 } // fix because it does not work for some reason
             }
-            //title.stringValue = webView.title!
+            title.stringValue = webView.title!
             if webView.estimatedProgress == 1.0 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     self.progressView.doubleValue = 0.1
@@ -363,15 +335,127 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
                     self.progressView.doubleValue = 0.0
                     self.progressView.doubleValue = 0.1
                 })
-                
+
             } // fix because it used to work but stopped out of nowhere for some mysterious reason
             
         }
     }
     
+    @IBOutlet var ToolsButton2: NSButton!
+    @IBOutlet var ToolsButton1: NSButton!
+    @IBOutlet var ToolsLabel: NSTextField!
+    @IBOutlet var MenuButtonVAR: NSButton!
+    @IBOutlet var Tools: NSWindow!
+    var MenuIsOpen = false
+    //var newsize: NSSize!
+    @IBAction func MenuButton(_ sender: Any) {
+        //print(sidemenu.frame.height)
+        print("HELLO - THIS IS A MARKER")
+        if MenuIsOpen == true {
+            print("MENU CLOSED")
+            MenuConnect.isHidden = true
+            ToolMenu.isHidden = true
+            ToolsLabel.isHidden = true
+            ToolsButton1.isHidden = true
+            ToolsButton2.isHidden = true
+            //Tools.setIsVisible(false)
+            //sidemenu.isHidden = true
+            //sidemenubg.isHidden = true
+           // repeat {
+                //usleep(1000)
+                //DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            //    newsize = NSMakeSize(sidemenu.frame.width, sidemenu.frame.height - 1)
+             //   sidemenu.setFrameSize(newsize)
+             //   print(sidemenu.frame.height)
+             //   print("Marker 2")
+                
+                //}
+            //} while sidemenu.frame.height != 1
+            MenuIsOpen = false
+        } else {
+            print("MENU OPEN")
+            MenuConnect.isHidden = false
+            ToolMenu.isHidden = false
+            ToolsLabel.isHidden = false
+            ToolsButton1.isHidden = false
+            ToolsButton2.isHidden = false
+            //sidemenu.isHidden = false
+            //sidemenubg.isHidden = false
+            MenuIsOpen = true
+        }
+    }
+    
+    
+    
+    
+    var repeatTimes = 0
+    
+    @IBAction func myURLonenter(_ sender: Any) {
+        //webView.configuration.
+        if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
+            // Detects if it's a URL
+            let request = URLRequest(url: URL(string: myURL.stringValue)!)
+            webView?.load(request)
+            print("Contains a url!")
+            repeatTimes = 0
+            print("System-Utility: Loaded " + myURL.stringValue + " successfully")
+        } else {
+            
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
+                // Detects if it's a URL
+                let theCurrentURL = "https://" + myURL.stringValue
+                let request = URLRequest(url: URL(string: theCurrentURL )!)
+                webView?.load(request)
+                print("Contains a url!")
+                repeatTimes = 0
+                print("System-Utility: Loaded " + myURL.stringValue + " successfully")
+            } else {
+                // Detects if it's a Google search
+                let newString = myURL.stringValue.replacingOccurrences(of: " ", with: "+",  options: .literal, range: nil) //replaces spaces with pluses otherwise it'll crash.
+                
+                let request = URLRequest(url: URL(string: "https://www.google.com/search?q="+newString)!)
+                
+                webView?.load(request)
+            }
+            
+        }
+    } // Loads URL input when Enter is pressed
+    
+    @IBAction func GoButton(_ sender: Any) {
+        
+        // find better way to detect website
+        
+
+        
+        if myURL.stringValue.hasPrefix("http://") || myURL.stringValue.hasPrefix("https://") {
+            // Detects if it's a URL
+            let request = URLRequest(url: URL(string: myURL.stringValue)!)
+            webView?.load(request)
+            print("Contains a url!")
+            repeatTimes = 0
+            print("System-Utility: Loaded " + myURL.stringValue + " successfully")
+        } else {
+            if myURL.stringValue.contains(".com") || myURL.stringValue.contains(".net") || myURL.stringValue.contains(".org") || myURL.stringValue.contains(".io") || myURL.stringValue.contains(".web") || myURL.stringValue.contains(".tk") || myURL.stringValue.contains(".gl") || myURL.stringValue.contains(".ly") || myURL.stringValue.contains(".be") {
+                // Detects if it's a URL
+                let theCurrentURL = "https://" + myURL.stringValue
+                let request = URLRequest(url: URL(string: theCurrentURL )!)
+                webView?.load(request)
+                print("Contains a url!")
+                repeatTimes = 0
+                print("System-Utility: Loaded " + myURL.stringValue + " successfully")
+            } else {
+                // Detects if it's a Google search
+                let newString = myURL.stringValue.replacingOccurrences(of: " ", with: "+",  options: .literal, range: nil) //replaces spaces with pluses otherwise it'll crash.
+            
+                let request = URLRequest(url: URL(string: "https://www.google.com/search?q="+newString)!)
+                
+                webView?.load(request)
+            }
+        }
+    } //Loads URL input when GoButton is pressed
 
     
-    
+
     //this is here to mark a location! Location: 4.D.C. KRET
     
     // ;)
