@@ -304,7 +304,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, WKNavigationDelegate, URLSes
             //if var myURL = NSURL(string: "https://github.com/Xenthio/Jewel/releases/download/v1.1/Jewel.zip") {
             //    Downloader.load(myURL)
             //}
-            
+            if webView.hasOnlySecureContent {
+                isSecure.isHidden = false
+            } else {
+                isSecure.isHidden = true
+            }
             progressView.startAnimation(self)
             //print(webView.url) //used for debugging. re-enable if needed
             progressView.increment(by: 1.0) //updating the value because otherwise it will be nil.
